@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Fundementals</title>
+    
+    <link rel="icon" type="image/x-icon" href="./src/favicon.ico">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+
+        body {
+            font-family: "Comfortaa";
+            padding: 0;
+            margin: 10px;
+            background-color: snow;
+            box-sizing: border-box;
+        }
+
+        header {
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+            width: 100%;
+            font-size: 30px;
+            font-weight: 700;
+            position: fixed;
+            left: 32.5%;
+            top: 30%;
+            transform: (-50%, -50%);
+        }
+
+        header a {
+            text-decoration: none;
+        }
+
+        h1 {
+            text-decoration: none;
+            color: black;
+        }
+
+        h1:hover {
+            text-decoration:line-through;
+            cursor: default;
+        }
+
+        .circle {
+            display: inline-block;
+            height: 3rem;
+            width: 3rem;
+            border-radius: 50%;
+            transition: transform .2s;
+        }
+
+        .circleOxford {
+            background-color: #0A2239;
+        }
+
+        .circleOxford:hover {
+            cursor: pointer;
+            background-color: #f5ddc6;
+            transform: scale(1.1);
+        }
+
+        .circleMoonstone {
+            background-color: #53A2BE;
+        }
+
+        .circleMoonstone:hover {
+            cursor: pointer;
+            background-color: #ac5d41;
+            transform: scale(1.1);
+        }
+
+        .circleBlue {
+            background-color: #1D84B5;
+        }
+
+        .circleBlue:hover {
+            cursor: pointer;
+            background-color: #e27b4a;
+            transform: scale(1.1);
+        }
+
+        .circleLapis {
+            background-color: #176087;
+        }
+
+        .circleLapis:hover {
+            cursor: pointer;
+            background-color: #e89f78;
+            transform: scale(1.1);
+        }
+
+        header>* {
+            display: inline-block;
+        }
+
+        .adSpace {
+            position: fixed;
+            bottom: 5%;
+            left: 33.5%;
+            transform: (-50%, -50%);
+        }
+
+        .adSpace iframe {
+            width: 600px;
+            height: 150px;
+        }
+
+        .adSpace-long {
+            padding: 20px
+        }
+
+        .adSpace-long iframe {
+            width: 150px;
+            height: 600px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="adSpace-long" style="position: fixed; right: 0;">
+        <iframe src="./src/ad.html?type=ad&width=150&height=600"></iframe>
+        <h3>AD</h3>
+    </div>
+    <header>
+        <a href="./aboutme.html"><div class="circle circleOxford"></div></a>
+        <a href="./family.html"><div class="circle circleMoonstone"></div></a>
+        <a href="./memes.html"><div class="circle circleBlue"></div></a>
+        <a href="./daveapproved.html"><div class="circle circleLapis"></div></a>
+
+        <a href="./games.html"><h1>Joseph Dean</h1></a>
+    </header>
+    <div class="adSpace">
+        <iframe src="./src/ad.html?type=suggested&width=599&height=148"></iframe>
+        <h3>Play where you left off!</h3>
+        <iframe src="./src/ad.html?type=ad&width=599&height=148"></iframe>
+        <h3>AD</h3>
+    </div>
+
+    <div class="adSpace-long">
+        <iframe src="./src/ad.html?type=ad&width=150&height=600"></iframe>
+        <h3>AD</h3>
+    </div>
+</body>
+</html>

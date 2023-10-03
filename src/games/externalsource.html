@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+</head>
+<body>
+    <p id="loading">Loading...</p>
+</body>
+<script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const url = urlParams.get("url");
+    const name = urlParams.get("name");
+
+    var loading = document.getElementById("loading");
+
+    loading.innerHTML = "Loading..."+name+""
+    window.location.href = url;
+</script>
+</html>

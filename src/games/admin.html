@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Link Generator</title>
+
+    <link rel="icon" type="image/x-icon" href="./src/favicon.ico">
+</head>
+<body>
+    <h1>Normal/ Files</h1>
+    <h3>Enter name</h3>
+    <input type="text" id="name1"> 
+    <h3>Enter File Name</h3>
+    <input type="text" id="file_name">
+    <br>
+    <h3>Type</h3>
+    <input type="text" id="type_name">
+
+    <button onclick="submit()">Submit</button>
+    <h1 id="outputFile">LINK: Please fill in above to generate a link!</h1>
+
+    <br>
+
+    <h1>External Source</h1>
+    <h3>Enter name</h3>
+    <input type="text" id="name2">
+    <h3>Enter URL</h3>
+    <input type="text" id="url">
+
+    <button onclick="submitURL()">Submit</button>
+    <h1 id="outputURL">LINK: Please fill above to generate a link!</h1>
+</body>
+<script>
+    const outputFile = document.getElementById("outputFile");
+    const outputURL = document.getElementById("outputURL");
+
+    function submitFile() {
+        var name = document.getElementById("name1").value;
+        var fileName = document.getElementById("file_name").value;
+        var fileType = document.getElementById("type_name").value;
+
+        outputFile.innerHTML = "LINK: Generating Link...";
+        var newLink = "./player.html?location="+btoa(fileName)+"&name="+name+"&type="+fileType+"";
+        console.log(newLink)
+        outputFile.innerHTML = "LINK: "+newLink+""
+    }
+
+    function submitURL() {
+        var name = document.getElementById("name2").value;
+        var url = document.getElementById("url").value;
+
+        externalSourceLink = "externalsource.html?url="+url+"&name="+name+""
+
+        outputURL.innerHTML = "LINK: Generating Link...";
+        var newLink = "./player.html?location="+btoa(externalSourceLink)+"&name="+name+"&type=HTML"
+        outputURL.innerHTML = "LINK: "+newLink+""
+    }
+</script>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Loading...</title>
+
+    <link rel="icon" type="image/x-icon" href="./src/favicon.ico">
+    <script src="./src/scripts/cookies.js">setup()</script>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+
+    body {
+        font-family: "Comfortaa";
+        padding: 0;
+        margin: 10px;
+        background-color: snow;
+    }
+
+    body {
+        overflow: none;
+    }
+
+    h1 {
+        text-align: center;
+        top: 0;
+    }
+</style>
+
+<body>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <h1 id="name">Loading...</h1>
+    <br>
+    <div id='container'></div>    
+</body>
+
+<script>
+
+    window.RufflePlayer = window.RufflePlayer || {};
+    window.addEventListener("DOMContentLoaded", start_Ruffle, false );
+
+    function setCookie(cname, cvalue) {
+        document.cookie = cname + "=" + cvalue + ";"
+    }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i]
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function start_Ruffle()
+    {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString)
+        const file = urlParams.get("location")
+        const name = urlParams.get("name")
+        const type = urlParams.get("type")
+
+        console.log(type)
+
+        let container = document.getElementById("container");
+        
+        var fileLocation = "./src/games/"+atob(file)+""
+        console.log(fileLocation)
+
+        if (type == "HTML") {
+            var iframe = document.createElement("iframe");
+            iframe.setAttribute("src", fileLocation);
+            iframe.style.width = "100%";
+            iframe.style.height = "700px";
+            container.appendChild(iframe);
+        } else {
+            let ruffle = window.RufflePlayer.newest();
+            let player = ruffle.createPlayer();
+                
+            container.appendChild(player);
+            player.load(fileLocation);
+
+            player.style.width = "100%"
+            player.style.height = "700px"
+        }
+
+        document.getElementById("name").innerHTML = name;
+        document.title = "Joes Games | "+name+"" 
+
+        setCookie("lastGame3", getCookie("lastGame2"))
+        setCookie("lastGame2", getCookie("lastGame1"))
+        setCookie("lastGame1", document.location.href)
+    }
+
+    
+    
+</script>
+</html>

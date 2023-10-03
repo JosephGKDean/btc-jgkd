@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body onload="checkCookie()">
+    <h1 style="text-align: center;" id="status"></h1>
+</body>
+<script>
+    const statusMsg = document.getElementById("status")
+
+    function passed() {
+        statusMsg.innerHTML = "Loading..."
+    }
+
+    function setCookie(cname, cvalue) {
+        document.cookie = cname + "=" + cvalue + ";"
+    }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i]
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function checkCookie() {
+        let checkUser = getCookie("admin");
+        if (checkUser == "True") {
+            passed()
+        } else {
+            password = prompt("Please enter password to access: ")
+            if (password != "" && password != null && btoa(password) == "TWFya2ZpZWxkMTAxMTU0") {
+                setCookie("admin", "True")
+                passed()
+            } 
+        }
+    }
+</script>
+</html>
