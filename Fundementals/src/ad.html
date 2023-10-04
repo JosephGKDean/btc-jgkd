@@ -62,6 +62,10 @@
         "mitchellAD": {
             "image": "./games/img/comingsoon.jpg",
             "link": "http://btc.jgkd.dev/Fundementals/games.html?from=mitchell"
+        },
+        "gzoneAD": {
+            "image": './gzone.png',
+            "link": 'https://btc.jgkd.dev/gzone'
         }
     }
 
@@ -94,6 +98,7 @@
     const type = urlParams.get("type");
     const width = urlParams.get("width");
     const height = urlParams.get("height");
+    const specAd = urlParams.get("ad");
 
     let link = document.getElementById("link");
     let image = document.getElementById("image");
@@ -152,16 +157,49 @@
 
         const keys = Object.keys(ads);
         const randomIndex = Math.floor(Math.random() * keys.length);
-        let currentIndex = keys[randomIndex]
 
-        let adlink = ads[currentIndex]["link"] + '&origin=' + window.top.location.href;
+        console.log(specAd)
 
-        console.log(adlink)
+        if (specAd != "") {
+            let currentIndex = ads[specAd]
+            if (specAd == "gzoneAD") {
+                text.remove()
+                desc.remove()
 
-        image.setAttribute("src", ads[currentIndex]["image"])
-        link.setAttribute("href", adlink)
-        
-        const iterval = setInterval(changingColours, 500);
+                image.style.width = "100%"
+                image.style.height = "100%"
+
+                let adlink = currentIndex["link"]
+
+                link.setAttribute("href", adlink)
+                image.setAttribute("src", currentIndex["image"])
+            }
+        } else {
+            let currentIndex = keys[randomIndex]
+            if (keys[randomIndex] == "gzoneAD")  {
+                text.remove()
+                desc.remove()
+
+                image.style.width = "100%"
+                image.style.height = "100%"
+
+                console.log(currentIndex)
+
+                let adlink = ads[currentIndex]["link"]
+
+                link.setAttribute("href", adlink)
+                image.setAttribute("src", ads[currentIndex]["image"])
+            } else {
+                let adlink = ads[currentIndex]["link"] + '&origin=' + window.top.location.href;
+
+                console.log(adlink)
+
+                image.setAttribute("src", ads[currentIndex]["image"])
+                link.setAttribute("href", adlink)
+                
+                const iterval = setInterval(changingColours, 500);
+            }
+        }    
     }
 
     
