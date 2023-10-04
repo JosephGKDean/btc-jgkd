@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Encryption</title>
+</head>
+<body>
+    <div>
+        <h1>URL Encryption</h1>
+        <input id="in"><br>
+        <input id="en"><br>
+        <button onclick="encrypt()">Encrypt</button><br>
+    </div>
+    <div>
+        <h1>Player Link Generator</h1>
+        <p>URL</p>
+        <input id="link-url"><br>
+        <p>Link</p>
+        <input id="link-en"><br>
+        <button onclick="linkgen()">Generate</button>
+    </div>
+</body>
+<script>
+
+    function encrypt() {
+        var baseString = document.getElementById("in").value;
+        encodedString = window.btoa(baseString)
+        document.getElementById("en").value=encodedString;
+    }
+
+    function linkgen() {
+        var url = document.getElementById("link-url").value;
+
+        encodedUrl = window.btoa(url);
+
+        var link = "./player.html?url=" + encodedUrl;
+
+        document.getElementById("link-en").value=link;
+    }
+</script>
+</html>
