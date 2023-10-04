@@ -160,7 +160,7 @@
 
         console.log(specAd)
 
-        if (specAd != "") {
+        if (specAd != null) {
             let currentIndex = ads[specAd]
             if (specAd == "gzoneAD") {
                 text.remove()
@@ -190,6 +190,8 @@
                 link.setAttribute("href", adlink)
                 image.setAttribute("src", ads[currentIndex]["image"])
             } else {
+                let currentIndex = keys[randomIndex]
+
                 let adlink = ads[currentIndex]["link"] + '&origin=' + window.top.location.href;
 
                 console.log(adlink)
