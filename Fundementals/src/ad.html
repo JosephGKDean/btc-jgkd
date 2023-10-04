@@ -136,10 +136,16 @@
             link.setAttribute("href", "http://btc.jgkd.dev/Fundementals/games.html?from=newUser&origin=" + window.top.location.href)
         }
     } else if (type=="hidden") {
-        text.innerHTML = ""
-        desc.innerHTML = ""
+        text.remove()
+        desc.remove()
+        imgage.remove()
+        link.remove()
+
+        document.body.style.width = '100%'
+        document.body.style.height = '100%'
+
         let adlink = "http://btc.jgkd.dev/Fundementals/games.html?from=hidden&origin=" + window.top.location.href;
-        link.setAttribute("href", adlink)
+        window.location.href = adlink;
     } else {
         text.innerHTML = "Play Fun Games!"
         desc.innerHTML = "At Joe's Fun Collection!"
