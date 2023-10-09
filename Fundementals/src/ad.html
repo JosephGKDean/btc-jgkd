@@ -57,15 +57,20 @@
     ads = {
         "daveAD": {
             "image": "./ApprovedDave.jpg",
-            "link": "http://btc.jgkd.dev/Fundementals/games.html?from=dave"
+            "link": "https://btc.jgkd.dev/Fundementals/games.html?from=dave"
         },
         "mitchellAD": {
             "image": "./games/img/comingsoon.jpg",
-            "link": "http://btc.jgkd.dev/Fundementals/games.html?from=mitchell"
+            "link": "https://btc.jgkd.dev/Fundementals/games.html?from=mitchell"
         },
         "gzoneAD": {
             "image": './gzone.png',
             "link": 'https://btc.jgkd.dev/gzone'
+        },
+        "blackhistorymonthAD": {
+            "image": "./blm.png",
+            "link": "https://btc.jgkd.dev/Fundementals/games.html?from=blm",
+            "customText": "COME AND PLAY SOME GAMES WHILE YOU CELEBRATE BLACK HISTORY MONTH!"
         }
     }
 
@@ -193,6 +198,10 @@
                 let currentIndex = keys[randomIndex]
 
                 let adlink = ads[currentIndex]["link"] + '&origin=' + window.top.location.href;
+
+                if (ads[currentIndex]["customText"] != null) {
+                    desc.innerHTML = ads[currentIndex]["customText"]
+                }
 
                 console.log(adlink)
 
