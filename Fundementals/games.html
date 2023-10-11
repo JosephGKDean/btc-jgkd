@@ -178,6 +178,39 @@
 
     const fromJsonFile = 'https://api.jgkd.dev/jgkd/fundementals/from.json'
 
+    fetch(fromJsonFile)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok.')
+            }
+            return response.json()
+        })
+        .then(data => {
+            if (data.hasOwnProperty(from)) {
+                data.from = data.from + 1
+            } else {
+                console.error('Property "from" not found in the JSON file.')
+                return;
+            }
+
+            return fetch(fromJsonFile, {
+                method: 'PUT',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to update JSON file');
+            }
+            console.log('Value added to "from" successfully.')
+        })
+        .catch(error => {
+            console.error('Error: ', error)
+        })
+
 
     const recentgamesMsg = document.getElementById("recentgamesMsg")
     const name = document.getElementById("name").onclick = function() {startColours()};
