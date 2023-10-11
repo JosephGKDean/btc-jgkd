@@ -160,10 +160,9 @@
             <img src="./src/games/img/crossyroad.png"></a>
         </div>
         <div class="game">
-            <a  href="./daveapproved.html" target="_blank">
-                <h2>More coming soon...</h2>
-                <img src="./src/games/img/comingsoon.jpg">
-            </a>
+            <a  href="./player.html?location=ZXh0ZXJuYWxzb3VyY2UuaHRtbD91cmw9aHR0cHM6Ly93d3cuY29tYmF0c2llZ2UuY29tLz9yPXRhYmNzMWVuYiZjbGlja2lkPUdpQlZfVUZpMTVySTFUbWpTcDV2QlczODA3ME9lMS1JdzVGZ1pGbTdVOG5nNFNEOGdGc28wSkhtOElfX29mTEVBUSZ1dG1fc291cmNlPXRhYm9vbGEtdG1nLXNvbWVyc2V0bGl2ZSZ1dG1fbWVkaXVtPXRhYmNzMWVuYiZ1dG1fdGVybT1JZit5b3Urb3duK2ErbW91c2UlMkMreW91K2hhdmUrdG8rdHJ5K3RoaXMrZ2FtZS4rTm8rSW5zdGFsbC4rUGxheStmb3IrZnJlZS4mdGJsY2k9R2lCVl9VRmkxNXJJMVRtalNwNXZCVzM4MDcwT2UxLUl3NUZnWkZtN1U4bmc0U0Q4Z0ZzbzBKSG04SV9fb2ZMRUFRI3RibGNpR2lCVl9VRmkxNXJJMVRtalNwNXZCVzM4MDcwT2UxLUl3NUZnWkZtN1U4bmc0U0Q4Z0ZzbzBKSG04SV9fb2ZMRUFRJm5hbWU9Q29tYmF0U2VpZ2U=&name=CombatSeige&type=HTML" target="_blank">
+            <h2>Combat Seige</h2>
+            <img src="./src/games/img/combatseige.png"></a>
         </div>
     </div>
     <footer>
@@ -176,6 +175,9 @@
     const urlParams = new URLSearchParams(queryString);
     const from = urlParams.get("from");
     const origin = urlParams.get("origin");
+
+    const fromJsonFile = 'https://api.jgkd.dev/jgkd/fundementals/from.json'
+
 
     const recentgamesMsg = document.getElementById("recentgamesMsg")
     const name = document.getElementById("name").onclick = function() {startColours()};
