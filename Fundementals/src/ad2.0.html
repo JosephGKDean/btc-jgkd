@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AD</title>
+</head>
+<body>
+    <a id="link">
+        <iframe id="adFrame"></iframe>
+    </a>
+</body>
+<script>
+    images = {
+        "ageofwar2": "ageofwar2.png",
+        "burgertycoon": "fastfoodtycoon.png",
+        "papaspizzera": "papaspizzeria.png",
+        "jacksmith": "jacksmith.png",
+        "themehotel": "themehotel.png",
+        "whenpizzasattack": "papalouiewhenpizzasattack.png",
+        "miraginewar": "miraginewar.jpg",
+        "eaglercraft": "eaglercraft.png",
+        "fivenightsatwinstons": "fnaw.png",
+        "slope": "slope.png",
+        "crossyroad": "crossyroad.png"
+    }
+
+    ads = {
+        "daveAD": {
+            "image": "./ApprovedDave.jpg",
+            "link": "https://btc.jgkd.dev/Fundementals/games.html?from=dave"
+        },
+        "mitchellAD": {
+            "image": "./games/img/comingsoon.jpg",
+            "link": "https://btc.jgkd.dev/Fundementals/games.html?from=mitchell"
+        },
+        "gzoneAD": {
+            "image": './gzone.png',
+            "link": 'https://btc.jgkd.dev/gzone'
+        },
+        "blackhistorymonthAD": {
+            "image": "./blm.png",
+            "link": "https://btc.jgkd.dev/Fundementals/games.html?from=blm",
+            "customText": "COME AND PLAY SOME GAMES WHILE YOU CELEBRATE BLACK HISTORY MONTH!"
+        },
+        "animaltestingAD": {
+            "image": "./animaltesting.png",
+            "link": "https://btc.jgkd.dev/Fundementals/games.html?from=animaltesting",
+            "customText": "STOP ANIMAL TESTING! PLAY OUR GAMES!"
+        }
+    }
+
+    const colours = ['red', 'orange', 'yellow', 'green', 'blue', 'violet']
+    let currentIndex = 0;
+
+    function changingColours() {
+        document.body.style.background = colours[currentIndex];
+        currentIndex = (currentIndex + 1) % colours.length; 
+    }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i]
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const type = urlParams.get("type");
+    const width = urlParams.get("width");
+    const height = urlParams.get("height");
+    const specAd = urlParams.get("ad");
+
+    const link = document.getElementById("link");
+    const iframe = document.getElementById("adFrame");
+    const adlink = "./adgen.html?";
+
+    let finalLink = ""
+
+    iframe.style.position = "fixed";
+
+    if (type=="suggested") {
+        if (getCookie("username") != "" && name != null) {
+            let gameURL = getCookie("lastGame1");
+            let searchParams = new URLSearchParams(gameURL)
+
+            let name = searchParams.get('name');
+
+            imageLocation = 'games/img/' + images[name.toLocaleLowerCase()]
+            finalLink = adlink + "name=Continue+Where+You+Left+Off&desc=It+will+be+fun!&image="+imageLocation+"&type=suggested"
+            link.setAttribute("href", gameURL)
+        } else{
+            finalLink = adlink + "name=Click+here+to+play+our+amazing+games!&desc=GET+FREE+ACCESS+TODAY!&type=suggested"
+            link.setAttribute("href", "http://btc.jgkd.dev/Fundementals/games.html?from=newUser&origin=" + window.top.location.href)
+        }
+    } else {
+        const keys = Object.keys(ads);
+        const randomIndex = Math.floor(Math.random() * keys.length)
+
+        if (specAd == null) {
+            let currentIndex = keys[randomIndex]
+
+            let currentLink = ads[currentIndex]["link"] + '&origin=' + window.top.location.href;
+
+            if (ads[currentIndex]["customText"] != null) {
+                currentDesc = ads[currentIndex]["customText"]
+            }
+
+            finalLink = adlink + "name=Play+Fun+Games!&desc=At+Joes+Fun+Collection!&image="+ads[currentIndex]["image"]+""
+        }
+    }
+
+    if (width != null && height != null) {
+        iframe.setAttribute("src", finalLink + "&width="+width+"&height="+height+"")
+    } else {
+        iframe.setAttribute("src", finalLink)
+    }
+</script>
+</html>
