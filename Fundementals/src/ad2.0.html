@@ -5,11 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        * {
+            text-decoration: none !important;
+            color: black;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw; 
+        }
+    </style> <!--Need to fix so text can be shown!+-->
 </head>
 <body>
-    <a id="link">
-        <iframe id="adFrame"></iframe>
+    <a href="#" id="link" target="_blank">
+        <div class="card mb-3" id="card">
+            <img src="./ApprovedDave.jpg" class="card-img-top" id="img">
+            <div class="card-body">
+                <h5 class="card-title" id="title">Loading...</h5>
+                <p class="card-text" id="desc" >Loading...</p>
+                <p class="card-text"><small class="text-body-secondary" id="footer">AD</small></p>
+            </div>
+        </div>
     </a>
+    
 </body>
 <script>
     images = {
@@ -48,6 +66,16 @@
             "image": "./animaltesting.png",
             "link": "https://btc.jgkd.dev/Fundementals/games.html?from=animaltesting",
             "customText": "STOP ANIMAL TESTING! PLAY OUR GAMES!"
+        },
+        "suddanAD1": {
+            "image": "./SuddanAd1.png",
+            "link": "https://btc.jgkd.dev/Fundementals/games.html?from=suddan",
+            "customText": "Can you find him?"
+        },
+        "suddanAD2": {
+            "image": "./SuddanAd2.png",
+            "link": "https://btc.jgkd.dev/Fundementals/games.html?from=suddan",
+            "customText": "Can you find him?"
         }
     }
 
@@ -83,12 +111,17 @@
     const specAd = urlParams.get("ad");
 
     const link = document.getElementById("link");
-    const iframe = document.getElementById("adFrame");
-    const adlink = "./adgen.html?";
+    const card = document.getElementById("card");
+    const image = document.getElementById("img");
+    const title = document.getElementById("title");
+    const desc = document.getElementById("desc");
+    const footer = document.getElementById("footer");
 
-    let finalLink = ""
+    if (width != null && height != null) {
+        document.body.style.width = width;
+        document.body.style.height = height;
+    }
 
-    iframe.style.position = "fixed";
 
     if (type=="suggested") {
         if (getCookie("username") != "" && name != null) {
@@ -98,10 +131,15 @@
             let name = searchParams.get('name');
 
             imageLocation = 'games/img/' + images[name.toLocaleLowerCase()]
-            finalLink = adlink + "name=Continue+Where+You+Left+Off&desc=It+will+be+fun!&image="+imageLocation+"&type=suggested"
+            image.setAttribute("src", imageLocation)
+            title.innerHTML = "Contiune Where You Left Off!"
+            desc.innerHTML = ""
+            footer.innerHTML = "Suggested"
             link.setAttribute("href", gameURL)
         } else{
-            finalLink = adlink + "name=Click+here+to+play+our+amazing+games!&desc=GET+FREE+ACCESS+TODAY!&type=suggested"
+            title.innerHTML = "Click here to play our amazing games!"
+            desc.innerHTML = "Get Free Access Today!"
+            footer.innerHTML = "Suggested"
             link.setAttribute("href", "http://btc.jgkd.dev/Fundementals/games.html?from=newUser&origin=" + window.top.location.href)
         }
     } else {
@@ -114,17 +152,15 @@
             let currentLink = ads[currentIndex]["link"] + '&origin=' + window.top.location.href;
 
             if (ads[currentIndex]["customText"] != null) {
-                currentDesc = ads[currentIndex]["customText"]
+                desc.innerHTML = ads[currentIndex]["customText"]
             }
 
-            finalLink = adlink + "name=Play+Fun+Games!&desc=At+Joes+Fun+Collection!&image="+ads[currentIndex]["image"]+""
+            title.innerHTML = "Play Fun Games!"
+            image.setAttribute("src", ads[currentIndex]["image"])
+            link.setAttribute("href", ads[currentIndex]["link"])
         }
     }
-
-    if (width != null && height != null) {
-        iframe.setAttribute("src", finalLink + "&width="+width+"&height="+height+"")
-    } else {
-        iframe.setAttribute("src", finalLink)
-    }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
 </html>
