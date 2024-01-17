@@ -1,0 +1,8 @@
+header {
+    display: flex;
+}
+
+.stuff {
+    text-align: center;
+    padding-top: 10vh;
+}
