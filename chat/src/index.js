@@ -72,10 +72,10 @@ function postChat(e) {
 const fetchChat = db.ref("messages/");
 fetchChat.on("child_added", function (snapshot) {
     const messages = snapshot.val();
-    username = messages.usr;
+    usernamelast = messages.usr;
     usermessage = messages.msg;
     
-    all_messages.push("<b>" + username + ":</b> " + usermessage)
+    all_messages.push("<b>" + usernamelast + ":</b> " + usermessage)
 
     console.log(all_messages)
 
