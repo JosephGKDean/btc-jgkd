@@ -68,6 +68,7 @@
         const file = urlParams.get("location");
         const name = urlParams.get("name");
         const type = urlParams.get("type");
+        const from = urlParams.get("from");
 
         console.log(type)
 
@@ -93,25 +94,16 @@
             player.style.height = "700px"
         }
 
-        const data_url = "https://api.jgkd.dev/btc/fundementals/games.json";
+        document.getElementById("name").innerHTML = name;
+        document.title = "Joes Games | "+name+"" 
 
-        fetch(data_url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch JSON> Status code: ${response.status}`);
-                }
-                return response.json()
-            })
-            .then(jsonData => {
-                game_name = jsonData[name]["display_name"]
-
-                document.getElementById("name").innerHTML = game_name;
-                document.title = "Joes Games | " + game_name + "" 
-            })
+        if (from == "iframe") {
+            setCookie("iframeGame", document.location.href)
+        }
 
         setCookie("lastGame3", getCookie("lastGame2"))
         setCookie("lastGame2", getCookie("lastGame1"))
-        setCookie("lastGame1", name) // change to new design - use id's
+        setCookie("lastGame1", document.location.href)
     }
 
     

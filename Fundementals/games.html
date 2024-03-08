@@ -1,233 +1,46 @@
-<!--Armor Flash Games Archive: https://archive.org/download/armorgames-->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fun Time With Joe</title>
 
-    <link rel="icon" type="image/x-icon" href="./src/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="https://cdn.jgkd.dev/Favicon">
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
-
-        * {
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: "Comfortaa";
-            padding: 0;
-            margin: 10px;
-            background-color: snow;
-            box-sizing: border-box;
-            text-align: center;
-            transition: background-color 0.5 ease;
-        }
-
-        header {
-            padding: 0;
-            margin: 0;
-            display: inline-block;
-            width: 100%;
-            font-size: 30px;
-            font-weight: 700;
-        }
-
-        .games {
-            display: grid;
-            width: 114em;
-            grid-gap: 6rem;
-            grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-            align-items: start;
-            padding-top: 100px;
-            padding-left: 30px;
-            padding: 10px;
-        }
-
-        .games a {
-            text-decoration: none;
-            color: black;
-        }
-
-        .game {
-            background-color: rgb(201, 201, 201);
-            border-radius: 0.4rem;
-            overflow: hidden;
-            box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .game:hover {
-            transform: translateY(-0.5%);
-            box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.5);
-        }
-
-        .game img {
-            display: block;
-            width: 100%;
-            height: 20rem;
-            object-fit: cover;
-        }
-
-        footer {
-            padding: 100px;
-            margin: 0;
-            margin-top: 0;
-            margin-bottom: 0;
-            text-align: center;
-        }
-
-        footer button {
-            border-radius: 100px;
-            background-color: #1D84B5;
-            border-color: whitesmoke;
-            color: white;
-            padding: 10px;
-        }
-
-        footer button:hover {
-            cursor: pointer;
-            background-color: white;
-            color: black;
-            border-color: #1D84B5;
-        }
-    </style>
+    <style></style>
 </head>
-<body onload="checkCookie()">
-    <header>
-        <h1 id="name">Joe's Fun Collection Of Games</h1>
-        <h2 id="recentgamesMsg"></h2>
+
+<body>
+    <header id="header">
+        <h1 id="title">Joe's Fun Collection Of Games</h1>
+        <h2 id="subtitle"></h2>
+        <h3 id="recent_games_title"></h3>
     </header>
     <div class="games" id="recent"></div>
-    <h2>Check out our entire collection of games!</h2>
-    <div class="games">
-        <div class="game">
-            <a href="./player.html?location=cGFwYXNwaXp6ZXJpYV92Mi5zd2Y=&name=PapasPizzera&type=flash" target="_blank">
-            <h2>Papas Pizzeria</h2>
-            <img src="./src/games/img/papaspizzeria.png"></a>
-        </div>
-        <div class="game">
-            <a href="./player.html?location=QnVyZ2VyVHljb29uLnN3Zg==&name=BurgerTycoon&type=flash" target="_blank">
-            <h2>Fast Food Tycoon</h2>
-            <img src="./src/games/img/fastfoodtycoon.png"></a>
-        </div>
-        <div class="game">
-            <a href="./player.html?location=YWdlb2Z3YXIyLnN3Zg==&name=AgeOfWar&type=flash" target="_blank">
-            <h2>Age of War 2</h2>
-            <img src="./src/games/img/ageofwar2.png"></a>
-        </div>
-        <div class="game">
-            <a  href="./player.html?location=amFja3NtaXRoLnN3Zg==&name=JackSmith&type=flash"target="_blank">
-            <h2>Jack Smith</h2>
-            <img src="./src/games/img/jacksmith.png"></a>
-        </div>
-        <div class="game">
-            <a  href="./player.html?location=VGhlbWVIb3RlbC5zd2Y=&name=ThemeHotel&type=flash" target="_blank">
-            <h2>Theme Hotel</h2>
-            <img src="./src/games/img/themehotel.png"></a>
-        </div>
-        <div class="game">
-            <a  href="./player.html?location=d2hlbnBpenphc2F0dGFjay5zd2Y=&name=WhenPizzasAttack&type=flash" target="_blank">
-            <h2>When Pizza's Attack</h2>
-            <img src="./src/games/img/papalouiewhenpizzasattack.png"></a>
-        </div>
-        <div class="game">
-            <a href="./player.html?location=bWlyYWdpbmV3YXIuc3dm&name=MiragineWar&type=flash" target="_blank">
-            <h2>Miragine War</h2>
-            <img src="./src/games/img/miraginewar.jpg"></a>
-        </div>
-        <div class="game">
-            <a  href="./player.html?location=ZXh0ZXJuYWxzb3VyY2UuaHRtbD91cmw9aHR0cHM6Ly9lYWdsZXJjcmFmdC5jb20vbWMvMS44LjgvJm5hbWU9RWFnbGVyY3JhZnQ=&name=Eaglercraft&type=HTML" target="_blank">
-            <h2>Eaglercraft</h2>
-            <img src="./src/games/img/eaglercraft.png"></a>
-        </div>
-        <div class="game">
-            <a  href="./player.html?location=ZXh0ZXJuYWxzb3VyY2UuaHRtbD91cmw9aHR0cHM6Ly9nLmRlZXYuaXMvZm5hdy8mbmFtZT1GaXZlTmlnaHRzQXRXaW5zdG9ucw==&name=FiveNightsAtWinstons&type=HTML" target="_blank">
-            <h2>Five Nights At Winston's</h2>
-            <img src="./src/games/img/fnaw.png"></a>
-        </div>
-        <div class="game">
-            <a  href="./player.html?location=ZXh0ZXJuYWxzb3VyY2UuaHRtbD91cmw9aHR0cHM6Ly9zbG9wZWdhbWUub25saW5lL3Nsb3BlLWdhbWUuZW1iZWQmbmFtZT1TbG9wZQ==&name=Slope&type=HTML" target="_blank">
-            <h2>Slope</h2>
-            <img src="./src/games/img/slope.png"></a>
-        </div>
-        <div class="game">
-            <a  href="./player.html?location=ZXh0ZXJuYWxzb3VyY2UuaHRtbD91cmw9aHR0cHM6Ly9jcm9zc3lyb2FkLm5ldGxpZnkuYXBwJm5hbWU9Q3Jvc3N5Um9hZA==&name=CrossyRoad&type=HTML" target="_blank">
-            <h2>CrossyRoad</h2>
-            <img src="./src/games/img/crossyroad.png"></a>
-        </div>
-        <div class="game">
-            <a  href="./player.html?location=ZXh0ZXJuYWxzb3VyY2UuaHRtbD91cmw9aHR0cHM6Ly93d3cuY29tYmF0c2llZ2UuY29tLz9yPXRhYmNzMWVuYiZjbGlja2lkPUdpQlZfVUZpMTVySTFUbWpTcDV2QlczODA3ME9lMS1JdzVGZ1pGbTdVOG5nNFNEOGdGc28wSkhtOElfX29mTEVBUSZ1dG1fc291cmNlPXRhYm9vbGEtdG1nLXNvbWVyc2V0bGl2ZSZ1dG1fbWVkaXVtPXRhYmNzMWVuYiZ1dG1fdGVybT1JZit5b3Urb3duK2ErbW91c2UlMkMreW91K2hhdmUrdG8rdHJ5K3RoaXMrZ2FtZS4rTm8rSW5zdGFsbC4rUGxheStmb3IrZnJlZS4mdGJsY2k9R2lCVl9VRmkxNXJJMVRtalNwNXZCVzM4MDcwT2UxLUl3NUZnWkZtN1U4bmc0U0Q4Z0ZzbzBKSG04SV9fb2ZMRUFRI3RibGNpR2lCVl9VRmkxNXJJMVRtalNwNXZCVzM4MDcwT2UxLUl3NUZnWkZtN1U4bmc0U0Q4Z0ZzbzBKSG04SV9fb2ZMRUFRJm5hbWU9Q29tYmF0U2VpZ2U=&name=CombatSeige&type=HTML" target="_blank">
-            <h2>Combat Seige</h2>
-            <img src="./src/games/img/combatseige.png"></a>
-        </div>
-    </div>
-    <footer>
-        <a href="./index.html"><button>GO HOME</button></a>
-    </footer>
+    <h3 id="games_message"></h3>
+    <div class="games" id="container"></div>
+    <footer id="button-container"></footer>
 </body>
 <script>
-
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const from = urlParams.get("from");
-    const origin = urlParams.get("origin");
+    const type = urlParams.get("type");
 
-    const fromJsonFile = 'https://api.jgkd.dev/jgkd/fundementals/from.json'
+    const title = document.getElementById("title");
+    const sub_title = document.getElementById("subtitle");
+    const recent_games = document.getElementById("recent")
+    const games_container = document.getElementById("container");
+    const button_container = document.getElementById("button-container");
+    const recent_games_title = document.getElementById("recent_games_title");
+    const games_message = document.getElementById("games_message");
 
-    fetch(fromJsonFile)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok.')
-            }
-            return response.json()
-        })
-        .then(data => {
-            if (data.hasOwnProperty(from)) {
-                data.from = data.from + 1
-            } else {
-                console.error('Property "from" not found in the JSON file.')
-                return;
-            }
-
-            return fetch(fromJsonFile, {
-                method: 'PUT',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to update JSON file');
-            }
-            console.log('Value added to "from" successfully.')
-        })
-        .catch(error => {
-            console.error('Error: ', error)
-        })
-
-
-    const recentgamesMsg = document.getElementById("recentgamesMsg")
-    const name = document.getElementById("name").onclick = function() {startColours()};
-    const colours = ['red', 'orange', 'yellow', 'green', 'blue', 'violet']
-    let currentIndex = 0;
-    function changingColours() {
-        document.body.style.background = colours[currentIndex];
-        currentIndex = (currentIndex + 1) % colours.length; 
-    }
-
-    function startColours() {
-        const iterval = setInterval(changingColours, 100);
-    }
-
+    // cookie functions
     function setCookie(cname, cvalue) {
         document.cookie = cname + "=" + cvalue + ";"
     }
+
 
     function getCookie(cname) {
         let name = cname + "=";
@@ -249,100 +62,152 @@
         let checkUser = getCookie("username");
         if (checkUser != "") {
             user = checkUser
+            return user
         } else {
             user = prompt("Please enter your name to access: ")
             if (user != "" && user != null) {
                 setCookie("username", user)
+                return user
             }
         }
     }
 
-    images = {
-        "ageofwar2": "ageofwar2.png",
-        "burgertycoon": "fastfoodtycoon.png",
-        "papaspizzera": "papaspizzeria.png",
-        "jacksmith": "jacksmith.png",
-        "themehotel": "themehotel.png",
-        "whenpizzasattack": "papalouiewhenpizzasattack.png",
-        "miraginewar": "miraginewar.jpg",
-        "eaglercraft": "eaglercraft.png",
-        "fivenightsatwinstons": "fnaw.png",
-        "slope": "slope.png",
-        "crossyroad": "crossyroad.png"
-    }
+    function getPastGames() {
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const cookieArray = decodedCookie.split(";");
 
-    let user = getCookie("username")
-    if (user == "") {
-        checkCookie()
+        const resultArray = [];
+        const cookieNamePrefix = "lastGame";
+
+        for (let i = 0; i < cookieArray.length; i++) {
+            let cookie = cookieArray[i].trim();
+            const [key, value] = cookie.split("=");
+
+            if (key.startsWith(cookieNamePrefix)) {
+                resultArray.push({ key: key, value: value });
+            }
+        }
+
+        return resultArray;
+    };
+
+    if (type == "iframe") {
+        var ss = document.createElement("link");
+
+        ss.rel = "stylesheet";
+        ss.type = "text/css";
+        ss.href = "./src/css/iframegames.css"
+
+        document.head.appendChild(ss);
+
+        recentGames = getCookie("lastGame1")
+
+        if (recentGames != false) { // <div class="games" id="recent"></div>
+            recent_games_title.innerHTML = "How about your most recent game: "
+            games_message.innerHTML = "Or check out our other games:"
+        };
     } else {
-        if (getCookie("lastGame1") != "" && getCookie("lastGame2") != "" && getCookie("lastGame3") != "") {
-            recentgamesMsg.innerHTML = "Hey! " + user + ", here are your recently played games:"
+        var ss = document.createElement("link");
 
-            const recentGames = document.getElementById("recent")
-            var card1 = document.createElement("div");
-            var card2 = document.createElement("div");
-            var card3 = document.createElement("div");
+        ss.rel = "stylesheet";
+        ss.type = "text/css";
+        ss.href = "./src/css/games.css"
 
-            card1.setAttribute("class", "game")
-            card2.setAttribute("class", "game")
-            card3.setAttribute("class", "game")
+        document.head.appendChild(ss);
 
-            recentGames.appendChild(card1);
-            recentGames.appendChild(card2);
-            recentGames.appendChild(card3);
+        username = checkCookie()
+        sub_title.innerHTML = `Hey, ${username}! What would you like to play?`
 
-            var a1 = document.createElement("a");
-            var a2 = document.createElement("a");
-            var a3 = document.createElement("a");
+        recentGames = getPastGames()
 
-            a1.setAttribute("href", getCookie("lastGame1"))
-            a2.setAttribute("href", getCookie("lastGame2"))
-            a3.setAttribute("href", getCookie("lastGame3"))
+        if (recentGames != false) { 
+            recent_games_title.innerHTML = "How about one of your recent games:"
+            games_message.innerHTML = "Or check out our other games:"
+        };
 
-            a1.setAttribute("target", "_blank")
-            a2.setAttribute("target", "_blank")
-            a3.setAttribute("target", "_blank")
+        var gb = document.createElement("a");
+        gb.setAttribute("href", "./index.html");
+        button_container.appendChild(gb)
 
-            card1.appendChild(a1);
-            card2.appendChild(a2);
-            card3.appendChild(a3);
+        var gb_btn = document.createElement("button");
+        gb_btn.innerHTML = "GO HOME";
+        gb.appendChild(gb_btn)
+    };
 
-            var text1 = document.createElement("h2");
-            var text2 = document.createElement("h2");
-            var text3 = document.createElement("h2");
+    // generate games
 
-            var img1 = document.createElement("img");
-            var img2 = document.createElement("img");
-            var img3 = document.createElement("img");
+    const data_url = "https://api.jgkd.dev/btc/fundementals/games.json";
 
-            for (var i = 0; i < 3; i++) {
-                let currentGame = "lastGame" + (i + 1);
-                let gameURL = getCookie(currentGame);
-                let searchParams = new URLSearchParams(gameURL);
-                let gameName = searchParams.get('name');
+    fetch(data_url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to fetech JSON. Status code: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(jsonData => {
+            var game_data = jsonData
 
-                if (i == 0) {
-                    text1.innerHTML = gameName
-                    img1.setAttribute("src", "./src/games/img/" + images[gameName.toLowerCase()])
-                } else if (i == 1) {
-                    text2.innerHTML = gameName
-                    img2.setAttribute("src", "./src/games/img/" + images[gameName.toLowerCase()])
-                } else if (i == 2) {
-                    text3.innerHTML = gameName
-                    img3.setAttribute("src", "./src/games/img/" + images[gameName.toLowerCase()])
+            console.log(game_data)
+
+            if (recentGames != false) {
+                function recent_create(current_name) {
+                    var recent_card = document.createElement("div");
+                    recent_card.setAttribute("class", "game");
+                    recent_games.appendChild(recent_card);
+
+                    var recent_a = document.createElement("a");
+                    recent_a.setAttribute("href", game_data[current_name]["location"]);
+                    recent_a.setAttribute("target", "_blank");
+                    recent_card.appendChild(recent_a);
+
+                    var recent_text = document.createElement("h2");
+                    recent_text.innerHTML = game_data[current_name]["display_name"];
+                    recent_a.appendChild(recent_text);
+
+                    var recent_img = document.createElement("img");
+                    recent_img.setAttribute("src", game_data[current_name]["img"])
+                    recent_a.appendChild(recent_img);
                 }
+ 
+                if (type == "iframe") {
+                    current_name = recentGames
+
+                    recent_create(current_name);
+                } else {
+                    for (var i in recentGames) {
+                        current_name = recentGames[i].value;
+
+                        recent_create(current_name);
+                    };
+                }       
             }
 
-            a1.appendChild(text1);
-            a2.appendChild(text2);
-            a3.appendChild(text3);
+            for (var i in game_data) {
+                current_game = game_data[i];
 
-            a1.appendChild(img1);
-            a2.appendChild(img2);
-            a3.appendChild(img3);
-        } else {
-            recentgamesMsg.innerHTML = "Hey! " + user + ", Enjoy our amazing selection of games!"
-        }
-    }
+                var card = document.createElement("div");
+                card.setAttribute("class", "game");
+                games_container.appendChild(card);
+
+                var a = document.createElement("a");
+                a.setAttribute("href", current_game["location"]);
+                a.setAttribute("target", "_blank");
+                card.appendChild(a);
+
+                var text = document.createElement("h2");
+                text.innerHTML = current_game["display_name"];
+                a.appendChild(text);
+
+                var img = document.createElement("img");
+                img.setAttribute("src", current_game["img"])
+                a.appendChild(img);
+            };
+
+        })
+        .catch(error => {
+            console.error(`Error: ${error.message}`)
+        })
 </script>
+
 </html>
