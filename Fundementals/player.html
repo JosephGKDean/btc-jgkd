@@ -27,17 +27,40 @@
         text-align: center;
         top: 0;
     }
+
+    footer {
+        padding: 100px;
+        margin: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        text-align: center;
+    }
+
+    footer button {
+        border-radius: 100px;
+        background-color: #1D84B5;
+        border-color: whitesmoke;
+        color: white;
+        padding: 10px;
+    }
+
+    footer button:hover {
+        cursor: pointer;
+        background-color: white;
+        color: black;
+        border-color: #1D84B5;
+    }
 </style>
 
 <body>
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
     <h1 id="name">Loading...</h1>
     <br>
-    <div id='container'></div>    
+    <div id='container'></div>
+    <footer id="back-container"></footer>    
 </body>
 
 <script>
-
     window.RufflePlayer = window.RufflePlayer || {};
     window.addEventListener("DOMContentLoaded", start_Ruffle, false );
 
@@ -68,10 +91,12 @@
         const file = urlParams.get("location");
         const name = urlParams.get("name");
         const type = urlParams.get("type");
+        const from = urlParams.get("from");
 
         console.log(type)
 
         let container = document.getElementById("container");
+        let back_container = document.getElementById("back-container");
         
         var fileLocation = "./src/games/"+atob(file)+""
         console.log(fileLocation)
@@ -93,6 +118,16 @@
             player.style.height = "700px"
         }
 
+        if (from == "iframe") {
+            var back_link = document.createElement("a");
+            back_link.setAttribute("href", "./games.html?type=iframe");
+            back_container.appendChild(back_link);
+
+            var back_button = document.createElement("button");
+            back_button.innerHTML = "Go Back";
+            back_link.appendChild(back_button);
+        }
+
         const data_url = "https://api.jgkd.dev/btc/fundementals/games.json";
 
         fetch(data_url)
@@ -111,7 +146,7 @@
 
         setCookie("lastGame3", getCookie("lastGame2"))
         setCookie("lastGame2", getCookie("lastGame1"))
-        setCookie("lastGame1", name) // change to new design - use id's
+        setCookie("lastGame1", name)
     }
 
     

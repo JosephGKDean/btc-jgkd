@@ -157,8 +157,6 @@
                     recent_games.appendChild(recent_card);
 
                     var recent_a = document.createElement("a");
-                    recent_a.setAttribute("href", game_data[current_name]["location"]);
-                    recent_a.setAttribute("target", "_blank");
                     recent_card.appendChild(recent_a);
 
                     var recent_text = document.createElement("h2");
@@ -168,10 +166,16 @@
                     var recent_img = document.createElement("img");
                     recent_img.setAttribute("src", game_data[current_name]["img"])
                     recent_a.appendChild(recent_img);
+
+                    if (type != "iframe") {
+                        recent_a.setAttribute("target", "_blank");
+                        recent_a.setAttribute("href", game_data[current_name]["location"]);
+                        recent_a.setAttribute("href", `${game_data[current_name]["location"]}&from=iframe`);
+                    }
                 }
  
                 if (type == "iframe") {
-                    current_name = recentGames
+                    current_name = recentGames;
 
                     recent_create(current_name);
                 } else {
@@ -191,8 +195,16 @@
                 games_container.appendChild(card);
 
                 var a = document.createElement("a");
-                a.setAttribute("href", current_game["location"]);
+
+                if (type != "iframe") {
+                console.log("Not iframe")
                 a.setAttribute("target", "_blank");
+                a.setAttribute("href", current_game["location"]);
+                
+                } else {
+                    a.setAttribute("href", `${current_game["location"]}&from=iframe`);
+                };
+
                 card.appendChild(a);
 
                 var text = document.createElement("h2");
